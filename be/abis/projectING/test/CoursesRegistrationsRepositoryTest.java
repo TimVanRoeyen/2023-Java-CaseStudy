@@ -2,6 +2,7 @@ package be.abis.projectING.test;
 
 import be.abis.projectING.exception.CourseAlreadyExistsException;
 import be.abis.projectING.model.Course;
+import be.abis.projectING.model.Participant;
 import be.abis.projectING.model.Person;
 import be.abis.projectING.repository.CoursesRegistrationsRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +34,7 @@ class CoursesRegistrationsRepositoryTest {
     public void testRegistrationsInCourseCount() throws CourseAlreadyExistsException {
         Course c1 = new Course(6, ".Net Fake Course", LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 3));
         coursesRegistrationsRepository.addCourseToList(c1);
-        Person p1 = new Person();
+        Person p1 = new Participant("Tim");
         coursesRegistrationsRepository.generateRegistrationsForCourse(coursesRegistrationsRepository.getCourseById(6), p1);
         assertEquals(3, coursesRegistrationsRepository.getCourseById(6).getSessionRegistrations().size());
     }

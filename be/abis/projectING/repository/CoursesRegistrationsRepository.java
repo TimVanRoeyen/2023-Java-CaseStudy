@@ -2,6 +2,7 @@ package be.abis.projectING.repository;
 
 import be.abis.projectING.exception.CourseAlreadyExistsException;
 import be.abis.projectING.model.Course;
+import be.abis.projectING.model.Participant;
 import be.abis.projectING.model.Person;
 import be.abis.projectING.model.SessionRegistration;
 import java.time.LocalDate;
@@ -20,7 +21,7 @@ public class CoursesRegistrationsRepository {
     private List<Course> courseList;
     public CoursesRegistrationsRepository(){
         courseList = new ArrayList<>();
-        Person person1 = new Person();
+        Person person1 = new Participant("Tim");
         Course course1 = new Course(1, "Java Advanced", LocalDate.of(2023,10,1),LocalDate.of(2023,10,6));
         generateRegistrationsForCourse(course1, person1);
         try {
@@ -28,7 +29,7 @@ public class CoursesRegistrationsRepository {
         } catch (CourseAlreadyExistsException e) {
             System.out.println(e.getMessage());
         }
-        Person person2 = new Person();
+        Person person2 = new Participant("Sandy");
         Course course2 = new Course(2, ".NET Basic", LocalDate.of(2024,8,20),LocalDate.of(2024,8,24));
         generateRegistrationsForCourse(course2, person2);
         try {
@@ -43,7 +44,7 @@ public class CoursesRegistrationsRepository {
         } catch (CourseAlreadyExistsException e) {
             System.out.println(e.getMessage());
         }
-        Person person3 = new Person();
+        Person person3 = new Participant("David");
         Course course4 = new Course(4, "Javascript", LocalDate.of(2024,11,12),LocalDate.of(2024,11,14));
         generateRegistrationsForCourse(course4, person3);
         try {

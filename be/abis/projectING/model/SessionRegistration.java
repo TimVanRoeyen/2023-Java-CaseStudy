@@ -6,13 +6,14 @@ public class SessionRegistration {
     private Course course;
     private Person instructor;
     private LocalDate sessionRegistrationDate;
-    //Each session registration has 1 order which is not filled by default. It can/must be set when sandwich orders are created
     private Order order;
 
     public SessionRegistration(Course course, Person instructor, LocalDate sessionRegistrationDate) {
         this.course = course;
         this.instructor = instructor;
         this.sessionRegistrationDate = sessionRegistrationDate;
+        // Create an (empty) order for each session registration
+        this.order = new Order(this);
     }
 
     public Course getCourse() {
@@ -45,5 +46,9 @@ public class SessionRegistration {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public void addSandwichToOrder(SandwichOrder o) {
+        this.order.addSandwichToOrder(o);
     }
 }
