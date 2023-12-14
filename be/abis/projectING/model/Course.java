@@ -32,31 +32,24 @@ public class Course {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public LocalDate getStartDate() {
         return startDate;
     }
-
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
     public LocalDate getEndDate() {
         return endDate;
     }
-
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
@@ -77,5 +70,11 @@ public class Course {
                 .map(SessionRegistration::getOrder)
                 .mapToDouble(Order::calculateOrderPrice)
                 .sum();
+    }
+
+    public SessionRegistration getSessionRegistrationByDate(LocalDate courseDate) {
+        return sessionRegistrations.stream()
+                .filter(sr -> sr.getSessionRegistrationDate().equals(courseDate))
+                .findFirst().get();
     }
 }

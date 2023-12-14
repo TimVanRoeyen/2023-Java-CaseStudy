@@ -49,6 +49,6 @@ public class SessionRegistration {
     }
 
     public void addSandwichToOrder(SandwichOrder o) {
-        this.order.addSandwichToOrder(o);
+        this.order.addSandwichOrderToOrder(o);
     }
 }
