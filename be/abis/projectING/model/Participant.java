@@ -5,7 +5,7 @@ public class Participant extends Person{
         super(name);
     }
     public void orderSandwich(SessionRegistration s, boolean vegetables, String remark, SandwichType sandwichType, BreadType breadType){
-        SandwichOrder so = new SandwichOrder(sandwichType, vegetables, breadType, remark);
+        SandwichOrder so = new SandwichOrder(sandwichType, vegetables, breadType, remark, this);
         s.addSandwichToOrder(so);
     }
 }

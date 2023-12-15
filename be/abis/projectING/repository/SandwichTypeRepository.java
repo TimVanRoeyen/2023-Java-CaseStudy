@@ -1,6 +1,7 @@
 package be.abis.projectING.repository;
 
 import be.abis.projectING.model.SandwichType;
+import be.abis.projectING.model.ToppingType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,5 +44,23 @@ public class SandwichTypeRepository {
                 .filter(st -> st.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .get();
+    }
+    public void addSandwichType(String name, String toppingType, Double price){
+        sandwichTypes.add(new SandwichType(name, toppingType, price));
+    }
+    public void addSandwichTypeWithDescription(String name, String toppingType, Double price, String description){
+        sandwichTypes.add(new SandwichType(name, toppingType, price, description));
+    }
+
+    public void removeSandwichTypeByName(String name){
+        sandwichTypes.removeIf(st -> st.getName().equalsIgnoreCase(name));
+    }
+
+    public String getOverviewOfSandwichTypes(){
+        StringBuilder sb = new StringBuilder();
+        sandwichTypes.stream()
+                .forEach(type -> sb.append(type.getName() + ","));
+        sb.append("\n");
+        return sb.toString();
     }
 }

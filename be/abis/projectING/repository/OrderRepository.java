@@ -18,4 +18,12 @@ public class OrderRepository {
         Order o3 = new Order(coursesRegistrationsRepository.getSessionRegistrationsForCourse(2).get(1));
         orderList.add(o3);
     }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
 }
